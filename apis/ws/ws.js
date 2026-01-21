@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 const ws_port = process.env.WS_SERVER;
-
+console.log(ws_port);
 const server = new WebSocketServer({
   port: ws_port,
   host: "::", // This is the 'bind to ::' part from alwaysdata docs
