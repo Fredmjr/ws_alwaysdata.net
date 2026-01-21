@@ -8,6 +8,23 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+//server
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.join(__filename);
+app.set("view engine", "hbs");
+app.set("/views", path.join(__dirname, "views", "components"));
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.use(express.static("public"));
+/* server.close(); */
+/* console.log("server running on port 1"); */
+app.listen(process.env.APP_PORT, () => {
+  console.log("application running: " + process.env.APP_PORT);
+});
+
 const ws_port = process.env.WS_SERVER;
 const server = new WebSocketServer({
   port: ws_port,
@@ -39,21 +56,4 @@ server.on("connection", (ws) => {
     console.log("closed" + clients.size);
   });
   ws.send(JSON.stringify({ type: "system_online", msg: "welcome" }));
-});
-
-//server
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.join(__filename);
-app.set("view engine", "hbs");
-app.set("/views", path.join(__dirname, "views", "components"));
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.use(express.static("public"));
-/* server.close(); */
-/* console.log("server running on port 1"); */
-app.listen(process.env.APP_PORT, () => {
-  console.log("application running: " + process.env.APP_PORT);
 });
