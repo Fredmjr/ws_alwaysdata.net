@@ -13,6 +13,7 @@ socket.addEventListener("message", (event) => {
   const mgsdata = JSON.parse(event.data);
   if (mgsdata.type === "system_online") {
     contents_Class.textContent = mgsdata.msg; //successful
+    console.log(mgsdata);
   } else {
     contents_Class.textContent = mgsdata.msg; //error
   }
