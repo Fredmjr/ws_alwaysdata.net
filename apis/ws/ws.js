@@ -6,7 +6,7 @@ dotenv.config();
 const ws_port = process.env.WS_SERVER;
 console.log(ws_port);
 const server = new WebSocketServer({
-  port: ws_port,
+  port: Number(ws_port),
   host: "::", // This is the 'bind to ::' part from alwaysdata docs
 });
 const clients = new Set();
@@ -40,4 +40,13 @@ server.on("connection", (ws) => {
     console.log("closed" + clients.size);
   });
   ws.send(JSON.stringify({ type: "system_online", msg: "welcome" }));
+});
+
+// error checks
+server.on("error", (err) => {
+  console.log("CRITICAL SERVER ERROR:", err);
+});
+
+process.on("uncaughtException", (err) => {
+  console.log("NODEJS EXCEPTION:", err);
 });
