@@ -36,8 +36,7 @@ server.on("connection", (ws) => {
 });
 
 /* server.close(); */
-/* console.log("server running on port 1");
+/* console.log("server running on port 1"); */
 app.listen(process.env.APP_PORT, () => {
-  console.log("Server running on port: " + process.env.APP_PORT);
+  console.log("application running: " + process.env.APP_PORT);
 });
- */
