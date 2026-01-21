@@ -3,7 +3,7 @@ const contents_Class = document.querySelector(".contents_Class");
 const input_text = document.querySelector(".input_text");
 
 //Clic based socket
-const socket = new WebSocket("wss://jetstorrent.alwaysdata.net/wss");
+const socket = new WebSocket("ws://services-jetstorrent.alwaysdata.net:8301");
 
 socket.addEventListener("open", (message) => {
   console.log("Websocket is running!");

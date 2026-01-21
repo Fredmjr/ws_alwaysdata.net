@@ -1,3 +1,4 @@
+import { WebSocketServer } from "ws";
 import dotenv from "dotenv";
 import express from "express";
 import path from "path";
@@ -6,6 +7,8 @@ import { fileURLToPath } from "url";
 dotenv.config();
 const app = express();
 app.use(express.json());
+
+//server
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.join(__filename);
