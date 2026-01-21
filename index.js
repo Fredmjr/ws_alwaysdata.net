@@ -51,6 +51,7 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+app.use(express.static("public"));
 /* server.close(); */
 /* console.log("server running on port 1"); */
 app.listen(process.env.APP_PORT, () => {
